@@ -16,13 +16,18 @@ void    flags(std::string str)
     }
 }
 
+read_input()
+
 int     main(int argc, char **argv)
 {
     for (int i = 0; i < argc; i++)
     {
         flags(static_cast<std::string>(argv[i]));
     }
-    std::cout << "hi" << std::endl;
+    while (1)
+    {
+        read_input();
+    }
     #ifdef LEAKS
             system("leaks Abstract-VM");
     #endif
