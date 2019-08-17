@@ -1,6 +1,6 @@
-SRC = main.cpp
+SRC = main.cpp Start.cpp
  
-INC = ./includes/main.hpp
+INC = ./includes/main.hpp ./includes/Start.hpp
 
 SRC_DIR = ./src/
 OBJ_DIR = ./obj/
