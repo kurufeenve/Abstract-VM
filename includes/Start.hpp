@@ -3,24 +3,29 @@
 
 #include <iostream>
 #include <string>
+#include <stack>
 
 class   Start
 {
 	private:
 		std::string	_inputBuffer;
+		std::stack <int> s;
 
 	protected:
-					~Start(void);
+					
 
 	public:
 					Start(void);
 					Start(const Start &St);
+					~Start(void);
 		Start   	&operator= (const Start &St);
 
 		std::string	getInputBuffer(void) const;
 
 		void		readInput();
 		void		checkFlags(int argc, char **flags);
+		void		showStack(std::stack <int> s) const;
+		void		push(int n);
 
 };
 

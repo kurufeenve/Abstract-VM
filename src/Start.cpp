@@ -26,7 +26,8 @@ void		Start::readInput() {
 
 	for(std::string line; std::getline(std::cin, line);) {
 		std::cout << line << std::endl;
-		if (line == END_OF_OPERATION) {
+		if (line == END_OF_OPERATION || line == "exit") {
+			//this->compute();
 			exit(0);
 		}
 	}
@@ -55,4 +56,21 @@ void		Start::checkFlags(int argc, char **flags) {
 		}
 	}
 	this->readInput();
+}
+
+void		Start::showStack(std::stack <int> s) const {
+
+	std::stack <int> buff;
+
+	buff = s;
+	while (buff.empty) {
+		std::cout << "\t" << buff.top() << std::endl;
+		buff.pop();
+	}
+	std::cout << "" << std::endl;
+}
+
+void		Start::push(int n) {
+
+	this->s.push(n);
 }
