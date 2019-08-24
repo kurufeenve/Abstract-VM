@@ -8,8 +8,9 @@
 class   Start
 {
 	private:
-		std::string	_inputBuffer;
-		std::stack <int> s;
+		std::string			_inputBuffer;
+		std::stack <int>	_s;
+		int					_lineCounter;
 
 	protected:
 					

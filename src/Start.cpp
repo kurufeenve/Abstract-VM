@@ -1,7 +1,7 @@
 #include "../includes/Start.hpp"
 #include "../includes/main.hpp"
 
-Start::Start(void) {}
+Start::Start(void): _lineCounter(0) {}
 
 Start::Start(const Start &St) {
 	*this = St;
@@ -24,12 +24,19 @@ std::string	Start::getInputBuffer(void) const {
 
 void		Start::readInput() {
 
+	Lexer	Lexer;
+	std::string s = "this is not a comment; this is comment!";
+
 	for(std::string line; std::getline(std::cin, line);) {
 		std::cout << line << std::endl;
-		if (line == END_OF_OPERATION || line == "exit") {
+		if (Lexer.tokenize(line) == MyErrors::SKIPP_LINE) {
+			std::cout << "skip the line" << std::endl;
+		}
+		if (line.find(END_OF_OPERATION) || line == "exit") {
 			//this->compute();
 			exit(0);
 		}
+		this->_lineCounter++;
 	}
 }
 
@@ -63,7 +70,7 @@ void		Start::showStack(std::stack <int> s) const {
 	std::stack <int> buff;
 
 	buff = s;
-	while (buff.empty) {
+	while (buff.empty()) {
 		std::cout << "\t" << buff.top() << std::endl;
 		buff.pop();
 	}
@@ -72,5 +79,6 @@ void		Start::showStack(std::stack <int> s) const {
 
 void		Start::push(int n) {
 
-	this->s.push(n);
+	std::cout << n << std::endl;
+	//this->s.push(n);
 }

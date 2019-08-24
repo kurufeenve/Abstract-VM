@@ -3,11 +3,15 @@
 
 #include <deque>
 #include <string>
+#include <iostream>
+#include <sstream>
+
+#include "MyErrors.hpp"
 
 class Lexer
 {
 	private:
-		std::deque<std::string> tockens;
+		std::deque<std::string> tokens;
 		
 	public:
 					Lexer();
@@ -15,7 +19,11 @@ class Lexer
 		virtual 	~Lexer();
 		Lexer		&operator= (const Lexer &Lex);
 
-		std::deque<std::string>	getTockens(void) const;
+		std::deque<std::string>	getTokens(void) const;
+
+		void					showTokens(void) const;
+		MyErrors				tokenize(std::string str);
+		std::string				commentIgnore(std::string str);
 };
 
 #endif
