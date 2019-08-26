@@ -5,6 +5,9 @@
 #include <string>
 #include <stack>
 
+#include "../includes/main.hpp"
+#include "../includes/Lexer.hpp"
+
 class   Start
 {
 	private:
@@ -31,3 +34,40 @@ class   Start
 };
 
 #endif
+
+/*
+std::strin[] tmp = 
+{
+	push,
+	pop,
+	damp
+}
+
+enum Factory
+{
+	push,
+	pop,
+	damp
+}
+
+std::string inp;
+
+for (std::size_t i = 0; i < tmp.size(); i++)
+{
+	if (tmp[i] == inp)
+	return i;
+}
+throw some
+
+ void DoSome(Factory tmp)
+ {
+	 switch (tmp)
+	 {
+	 case Factory::push:
+		 pushfunk()
+		 break;
+	 
+	 default:
+		 break;
+	 }
+ }*/

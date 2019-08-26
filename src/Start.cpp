@@ -24,7 +24,7 @@ std::string	Start::getInputBuffer(void) const {
 
 void		Start::readInput() {
 
-	Lexer	Lexer;
+	Lexer	&Lexer = Lexer::GetInstatce();
 	std::string s = "this is not a comment; this is comment!";
 
 	for(std::string line; std::getline(std::cin, line);) {

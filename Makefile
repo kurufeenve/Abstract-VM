@@ -9,7 +9,7 @@ SRC_DIR = ./src/
 OBJ_DIR = ./obj/
 OBJ = $(addprefix $(OBJ_DIR),$(SRC:.cpp=.o))
 NAME = Abstract-VM
-CFLAG = -Werror -Wextra -Wall -std=c++11
+CFLAG = -Werror -Wextra -Wall -std=c++14
 #LIB = -lcurses -lncurses
 CC = clang++
 REMAKE = rmk

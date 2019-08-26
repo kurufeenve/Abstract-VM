@@ -3,7 +3,7 @@
 
 #include <cstdint>
 
-class	Int8
+class	Int8: public IOperand
 {
 	private:
 		int8_t	number;
@@ -17,6 +17,8 @@ class	Int8
 		void	setNumber(int8_t number);
 
 		int8_t	getNumber(void) const;
+
+		
 };
 
 #endif

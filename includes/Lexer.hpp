@@ -12,13 +12,22 @@ class Lexer
 {
 	private:
 		std::deque<std::string> tokens;
-		
-	public:
+		static std::unique_ptr<Lexer> single;
+//		static bool  is_exist;
 					Lexer();
 					Lexer(const Lexer &Lex);
-		virtual 	~Lexer();
 		Lexer		&operator= (const Lexer &Lex);
-
+		
+	public:
+		virtual 	~Lexer();
+		static Lexer  &GetInstatce()
+		{
+			if (single == nullptr)
+			{
+				single = std::unique_ptr<Lexer>(new Lexer());
+			}
+			return *single;
+		}
 		std::deque<std::string>	getTokens(void) const;
 
 		void					showTokens(void) const;
