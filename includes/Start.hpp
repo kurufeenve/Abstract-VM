@@ -7,13 +7,15 @@
 
 #include "../includes/main.hpp"
 #include "../includes/Lexer.hpp"
+#include "../includes/types.hpp"
 
 class   Start
 {
 	private:
-		std::string			_inputBuffer;
-		std::stack <int>	_s;
-		int					_lineCounter;
+		std::string				_inputBuffer;
+		std::stack <int>		_cmd;
+		std::stack <IOperand>	_val;	
+		int						_lineCounter;
 
 	protected:
 					
@@ -25,6 +27,8 @@ class   Start
 		Start   	&operator= (const Start &St);
 
 		std::string	getInputBuffer(void) const;
+
+		void		setLineCounter(int);
 
 		void		readInput();
 		void		checkFlags(int argc, char **flags);

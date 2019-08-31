@@ -3,7 +3,7 @@
 
 #include <cstdint>
 
-class	Int8: public IOperand
+class	Int8//: public IOperand
 {
 	private:
 		int8_t	number;

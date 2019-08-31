@@ -8,11 +8,14 @@
 
 #include "MyErrors.hpp"
 
+class Error;
+
 class Lexer
 {
 	private:
-		std::deque<std::string> tokens;
-		static std::unique_ptr<Lexer> single;
+		std::deque<std::string>			_tokens;
+		static std::unique_ptr<Lexer>	_single;
+		MyErrors						_error;
 //		static bool  is_exist;
 					Lexer();
 					Lexer(const Lexer &Lex);
@@ -22,11 +25,11 @@ class Lexer
 		virtual 	~Lexer();
 		static Lexer  &GetInstatce()
 		{
-			if (single == nullptr)
+			if (_single == nullptr)
 			{
-				single = std::unique_ptr<Lexer>(new Lexer());
+				_single = std::unique_ptr<Lexer>(new Lexer());
 			}
-			return *single;
+			return *_single;
 		}
 		std::deque<std::string>	getTokens(void) const;
 
