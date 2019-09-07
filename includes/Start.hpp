@@ -8,6 +8,8 @@
 #include "../includes/main.hpp"
 #include "../includes/Lexer.hpp"
 #include "../includes/types.hpp"
+#include "../includes/MyErrors.hpp"
+#include "../includes/IOperand.hpp"
 
 class   Start
 {

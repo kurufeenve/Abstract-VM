@@ -2,6 +2,7 @@
 #define IOPERAND_HPP
 
 #include <string>
+#include "typesEnum.hpp"
 
 class IOperand {
 public:

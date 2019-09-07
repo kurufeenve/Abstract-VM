@@ -9,12 +9,16 @@ enum class MyErrors {
 
 class	Error : public std::exception
 {
+	private:
+		MyErrors	_error;
+
 	public:
 		Error();
 		Error(const Error &Er);
 		virtual ~Error() throw();
 		Error	&operator= (const Error &Er);
-		virtual const char *what(MyErrors error) const throw();
+		virtual const char *what() const throw();
+		void		setError() __attribute__ ((noreturn));
 };
 
 #endif

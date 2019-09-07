@@ -5,6 +5,8 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <memory>
+
 
 #include "MyErrors.hpp"
 
@@ -14,8 +16,7 @@ class Lexer
 {
 	private:
 		std::deque<std::string>			_tokens;
-		static std::unique_ptr<Lexer>	_single;
-		MyErrors						_error;
+		int								_error;
 //		static bool  is_exist;
 					Lexer();
 					Lexer(const Lexer &Lex);
@@ -25,16 +26,13 @@ class Lexer
 		virtual 	~Lexer();
 		static Lexer  &GetInstatce()
 		{
-			if (_single == nullptr)
-			{
-				_single = std::unique_ptr<Lexer>(new Lexer());
-			}
-			return *_single;
+			static Lexer theOne;
+			return theOne;
 		}
 		std::deque<std::string>	getTokens(void) const;
 
 		void					showTokens(void) const;
-		MyErrors				tokenize(std::string str);
+		int						tokenize(std::string str);
 		std::string				commentIgnore(std::string str);
 };
 

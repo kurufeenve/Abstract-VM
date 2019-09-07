@@ -29,20 +29,20 @@ void		Start::setLineCounter(int counter) {
 
 void		Start::readInput() {
 
-	// Lexer	&Lexer = Lexer::GetInstatce();
-	// std::string s = "this is not a comment; this is comment!";
+	Lexer	&Lexer = Lexer::GetInstatce();
+	std::string s = "this is not a comment; this is comment!";
 
-	// for(std::string line; std::getline(std::cin, line);) {
-	// 	std::cout << line << std::endl;
-	// 	if (Lexer.tokenize(line) == MyErrors::SKIPP_LINE) {
-	// 		std::cout << "skip the line" << std::endl;
-	// 	}
-	// 	if (line.find(END_OF_OPERATION) || line == "exit") {
-	// 		//this->compute();
-	// 		exit(0);
-	// 	}
-	// 	this->_lineCounter++;
-	// }
+	for(std::string line; std::getline(std::cin, line);) {
+		std::cout << line << std::endl;
+		if (Lexer.tokenize(line) == static_cast<int>(MyErrors::SKIP_LINE)) {
+			std::cout << "skip the line" << std::endl;
+		}
+		if (line.find(END_OF_OPERATION) || line == "exit") {
+			//this->compute();
+			exit(0);
+		}
+		this->_lineCounter++;
+	}
 }
 
 void		Start::checkFlags(int argc, char **flags) {

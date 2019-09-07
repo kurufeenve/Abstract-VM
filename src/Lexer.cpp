@@ -32,18 +32,18 @@ void					Lexer::showTokens(void) const {
 	}
 }
 
-MyErrors				Lexer::tokenize(std::string str) {
+int				Lexer::tokenize(std::string str) {
 
 	std::string		ss;
 
 	ss = this->commentIgnore(str);
 	if (ss.size() == 0) {
-		this->_error = MyErrors::SKIPP_LINE;
-		return (MyErrors::SKIPP_LINE);
+		this->_error = 1;
+		return (1);
 	}
 	std::stringstream	s(ss);
 
-	return (MyErrors::SUCCESS);
+	return (0);
 }
 
 std::string				Lexer::commentIgnore(std::string str) {

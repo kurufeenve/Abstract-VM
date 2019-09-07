@@ -3,16 +3,6 @@
 
 #include "IOperand.hpp"
 
-enum class eOperandType {
-
-	INT8 = 0x00,
-	INT16 = 0x01,
-	INT32 = 0x02,
-	FLOAT = 0x03,
-	DOUBLE = 0x04,
-	UNDEFINED = 0xFF
-};
-
 template <typename T>
 class Value {
 	private:
@@ -47,7 +37,7 @@ class Value {
 		void	setValue(T val) {
 
 			this->_value = val;
-			if (T == )
+			//if (T == )
 		}
 
 

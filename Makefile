@@ -1,9 +1,10 @@
 SRC = main.cpp Start.cpp Int8.cpp Int16.cpp Int32.cpp Float.cpp \
 Double.cpp Lexer.cpp
  
-INC = ./includes/main.hpp ./includes/Start.hpp ./includes/Int8.hpp\
+INC = ./includes/main.hpp ./includes/Start.hpp ./includes/Int8.hpp \
 ./includes/Int16.hpp ./includes/Int32.hpp ./includes/Float.hpp \
-./includes/Double.hpp ./includes/Lexer.hpp
+./includes/Double.hpp ./includes/Lexer.hpp ./includes/types.hpp \
+./includes/typesEnum.hpp
 
 SRC_DIR = ./src/
 OBJ_DIR = ./obj/
