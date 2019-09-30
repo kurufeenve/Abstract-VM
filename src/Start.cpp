@@ -48,18 +48,18 @@ void		Start::readInput() {
 void		Start::checkFlags(int argc, char **flags) {
 
 	if (argc < 2) {
-		std::cout << "This is Abstract VM.\n\nUsage:\n" << std::endl;
+		std::cout << this->_greeting << this->_usage << std::endl;
 	}
 	else {
 		for (int i = 0; i < argc; i++)
 		{
 			this->_inputBuffer = flags[i];
 			if (this->_inputBuffer == "-h") {
-				std::cout << "help" << std::endl;
+				std::cout << this->_help << std::endl;
 			}
 			else if (this->_inputBuffer == "-v")
 			{
-				std::cout << "0.0.0 - nothing is ready yet." << std::endl;
+				std::cout << this->_version << std::endl;
 				#ifdef LEAKS
 					system("leaks Abstract-VM");
 				#endif

@@ -1,12 +1,13 @@
 #ifndef LEXER_HPP
 #define LEXER_HPP
 
-#include <deque>
+//#include <deque>
 #include <string>
 #include <iostream>
+#include <fstream>
 #include <sstream>
 #include <memory>
-
+#include <map>
 
 #include "MyErrors.hpp"
 
@@ -15,8 +16,11 @@ class Error;
 class Lexer
 {
 	private:
-		std::deque<std::string>			_tokens;
-		int								_error;
+		//std::deque<std::string>			_tokens;
+		std::map<int, std::string>		_cmds;
+		//int								_error;
+		std::string						_operator;
+		std::string						_operand;
 //		static bool  is_exist;
 					Lexer();
 					Lexer(const Lexer &Lex);
@@ -29,7 +33,7 @@ class Lexer
 			static Lexer theOne;
 			return theOne;
 		}
-		std::deque<std::string>	getTokens(void) const;
+		//std::deque<std::string>	getTokens(void) const;
 
 		void					showTokens(void) const;
 		int						tokenize(std::string str);

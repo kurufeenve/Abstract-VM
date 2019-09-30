@@ -18,6 +18,10 @@ class   Start
 		std::stack <int>		_cmd;
 		std::stack <IOperand>	_val;	
 		int						_lineCounter;
+		std::string				_greeting = "This is Abstract VM.\n\n";
+		std::string				_usage = "Usage:\n";
+		std::string				_help = "help\n";
+		std::string				_version = "0.0.0 - nothing is ready yet.";
 
 	protected:
 					

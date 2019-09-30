@@ -11,38 +11,34 @@ Lexer::~Lexer(void) {}
 Lexer		&Lexer::operator= (const Lexer &Lex) {
 
 	if (this != &Lex) {
-		this->_tokens = Lex._tokens;
+		//this->_tokens = Lex._tokens;
 	}
 	return *this;
 }
 
-std::deque<std::string>	Lexer::getTokens(void) const {
+// std::deque<std::string>	Lexer::getTokens(void) const {
 	
-	return (this->_tokens);
-}
+// 	return (this->_tokens);
+// }
 
 void					Lexer::showTokens(void) const {
 
-	size_t	size;
-	size_t	i;
+	// size_t	size;
+	// size_t	i;
 
-	size = this->_tokens.size();
-	for (i = 0; i < size; i++) {
-		std::cout << this->_tokens.at(i) << std::endl;
-	}
+	// size = this->_tokens.size();
+	// for (i = 0; i < size; i++) {
+	// 	std::cout << this->_tokens.at(i) << std::endl;
+	// }
 }
 
 int				Lexer::tokenize(std::string str) {
 
-	std::string		ss;
+	std::istringstream	stringStream(str);
 
-	ss = this->commentIgnore(str);
-	if (ss.size() == 0) {
-		this->_error = 1;
-		return (1);
-	}
-	std::stringstream	s(ss);
-
+	stringStream >> this->_operator >> this->_operand;
+	std::cout << this->_operator << std::endl;
+	std::cout << this->_operand << std::endl;
 	return (0);
 }
 
