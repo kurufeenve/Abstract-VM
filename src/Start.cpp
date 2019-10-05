@@ -30,10 +30,9 @@ void		Start::setLineCounter(int counter) {
 void		Start::readInput() {
 
 	Lexer	&Lexer = Lexer::GetInstatce();
-	std::string s = "this is not a comment; this is comment!";
 
 	for(std::string line; std::getline(std::cin, line);) {
-		std::cout << line << std::endl;
+		line = Lexer.commentIgnore(line);
 		if (Lexer.tokenize(line) == static_cast<int>(MyErrors::SKIP_LINE)) {
 			std::cout << "skip the line" << std::endl;
 		}

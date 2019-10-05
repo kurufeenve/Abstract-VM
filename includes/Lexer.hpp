@@ -1,6 +1,7 @@
 #ifndef LEXER_HPP
 #define LEXER_HPP
 
+//external
 //#include <deque>
 #include <string>
 #include <iostream>
@@ -9,7 +10,9 @@
 #include <memory>
 #include <map>
 
+//internal
 #include "MyErrors.hpp"
+#include "cmd.hpp"
 
 class Error;
 

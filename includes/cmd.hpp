@@ -1,6 +1,8 @@
 #ifndef CMD_HPP
 #define CMD_HPP
 
+#define	CMD_MAX_NUM 11
+
 enum class cmd {
 	push = 0x00,
 	pop = 0x01,
