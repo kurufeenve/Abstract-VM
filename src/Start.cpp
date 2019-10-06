@@ -27,13 +27,15 @@ void		Start::setLineCounter(int counter) {
 	this->_lineCounter = counter;
 }
 
-void		Start::readInput() {
+void		Start::readInput(std::string fileName) {
 
-	Lexer	&Lexer = Lexer::GetInstatce();
+	Lexer			&Lexer = Lexer::GetInstatce();
+	std::string		line;
+	std::ifstream	f_stream(fileName);
 
-	for(std::string line; std::getline(std::cin, line);) {
+	while (std::getline((f_stream.is_open() ? (f_stream) : (std::cin)), line)) {
 		line = Lexer.commentIgnore(line);
-		if (Lexer.tokenize(line) == static_cast<int>(MyErrors::SKIP_LINE)) {
+		if (Lexer.tokenize(line) == (MyErrors::SKIP_LINE)) {
 			std::cout << "skip the line" << std::endl;
 		}
 		if (line.find(END_OF_OPERATION) || line == "exit") {
@@ -46,6 +48,8 @@ void		Start::readInput() {
 
 void		Start::checkFlags(int argc, char **flags) {
 
+	std::string	file;
+
 	if (argc < 2) {
 		std::cout << this->_greeting << this->_usage << std::endl;
 	}
@@ -53,20 +57,30 @@ void		Start::checkFlags(int argc, char **flags) {
 		for (int i = 0; i < argc; i++)
 		{
 			this->_inputBuffer = flags[i];
-			if (this->_inputBuffer == "-h") {
-				std::cout << this->_help << std::endl;
-			}
-			else if (this->_inputBuffer == "-v")
+			if (this->_inputBuffer[0] == '-' && this->_inputBuffer.size() == 2)
 			{
-				std::cout << this->_version << std::endl;
-				#ifdef LEAKS
-					system("leaks Abstract-VM");
-				#endif
-				exit(0);
+				std::cout << "in flags" << std::endl;
+				if (this->_inputBuffer == "-h") {
+					std::cout << this->_help << std::endl;
+				}
+				else if (this->_inputBuffer == "-v")
+				{
+					std::cout << this->_version << std::endl;
+					#ifdef LEAKS
+						system("leaks Abstract-VM");
+					#endif
+					exit(0);
+				}
 			}
+			else
+			{
+				file = this->_inputBuffer;
+				break ;
+			}
+			
 		}
 	}
-	this->readInput();
+	this->readInput(file);
 }
 
 void		Start::showStack(std::stack <int> s) const {

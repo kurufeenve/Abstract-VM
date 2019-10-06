@@ -40,19 +40,24 @@ void					Lexer::showTokens(void) const {
 	// }
 }
 
-int				Lexer::tokenize(std::string str) {
+MyErrors				Lexer::tokenize(std::string str) {
 
 	std::istringstream	stringStream(str);
-	bool				res;
+	MyErrors			res;
 
-	res = 1;
+	res = MyErrors::UNKNOWN_ERROR;
 	stringStream >> this->_operator >> this->_operand;
 	std::cout << this->_operator << std::endl;
 	std::cout << this->_operand << std::endl;
 	for (int i = 0; i < CMD_MAX_NUM; i++) {
 		if (this->_operator == this->_cmds[i]) {
+			if ((this->_operator == this->_cmds[static_cast<int>(cmd::push)] ||
+			this->_operator == this->_cmds[static_cast<int>(cmd::assert)]) && this->_operand.empty()) {
+
+				return MyErrors::OPERAND_EMPTY;
+			}
 			//call the parser
-			res = 0;
+			res = MyErrors::SUCCESS;
 		}
 	}
 	return (res);
@@ -60,11 +65,6 @@ int				Lexer::tokenize(std::string str) {
 
 std::string				Lexer::commentIgnore(std::string str) {
 
-	std::size_t	pos;
-
-	pos = str.find(';');
-	if (pos == std::string::npos) {
-		return str;
-	}
-	return str.substr(0, pos);
+	std::string	ret(str.begin(), std::find(str.begin(), str.end(), ';'));
+	return ret;
 }

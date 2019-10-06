@@ -4,6 +4,7 @@
 enum class MyErrors {
 	SUCCESS = 0x00,
 	SKIP_LINE = 0x01,
+	OPERAND_EMPTY = 0x02,
 	UNKNOWN_ERROR = 0xFF
 };
 

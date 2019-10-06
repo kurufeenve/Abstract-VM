@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <stack>
+#include <fstream>
 
 #include "../includes/main.hpp"
 #include "../includes/Lexer.hpp"
@@ -36,7 +37,7 @@ class   Start
 
 		void		setLineCounter(int);
 
-		void		readInput();
+		void		readInput(std::string fileName);
 		void		checkFlags(int argc, char **flags);
 		void		showStack(std::stack <int> s) const;
 		void		push(int n);

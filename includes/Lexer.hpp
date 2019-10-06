@@ -9,6 +9,7 @@
 #include <sstream>
 #include <memory>
 #include <map>
+#include <algorithm>
 
 //internal
 #include "MyErrors.hpp"
@@ -39,7 +40,7 @@ class Lexer
 		//std::deque<std::string>	getTokens(void) const;
 
 		void					showTokens(void) const;
-		int						tokenize(std::string str);
+		MyErrors				tokenize(std::string str);
 		std::string				commentIgnore(std::string str);
 };
 
