@@ -4,27 +4,64 @@
 //internal
 #include "IOperand.hpp"
 
+enum class eOperandType {
+	INT8_T,
+	INT16_T,
+	INT32_T,
+	FLOAT,
+	DOUBLE
+};
+
 template <class T>
 class Operand: public IOperand
 {
 private:
-	<T>	value;
-	int	precision;
+
+	T				_value;
+	int				_precision;
+	eOperandType	_type;
+	Operand() {}
+	Operand(const Operand<T> &Op) {
+		*this = Op;
+	}
+	~Operand() {}
 	
 public:
-	Operand(/* args */);
-	~Operand();
-	int getPrecision( void ) const = 0; {
+
+	Operand(eOperandType type, T val) {
+
+		this->_type = type;
+		this->_value = val;
+		this->_precision = 0;
+	}
+
+	int getPrecision( void ) const; {
 
 		return this->_precision;
 	}
-	eOperandType getType( void ) const = 0; // Type of the instance
-	IOperand const * operator+( IOperand const & rhs ) const = 0; // Sum
-	IOperand const * operator-( IOperand const & rhs ) const = 0; // Difference
-	IOperand const * operator*( IOperand const & rhs ) const = 0; // Product
-	IOperand const * operator/( IOperand const & rhs ) const = 0; // Quotient
-	IOperand const * operator%( IOperand const & rhs ) const = 0; // Modulo
-	std::string const & toString( void ) const = 0; // String representation of the instance
+
+	eOperandType getType( void ) const; // Type of the instance
+
+	Operand<T>	&operator= (const Operand<T> &Op) {
+		
+		if (this != &Op) {
+			this->_type = Op._type;
+			this->_value = Op._value;
+			this->_precision = Op._precision;
+		}
+		return *this;
+	}
+
+	IOperand const * operator+( IOperand const & rhs ) const {
+
+		
+	}
+
+	IOperand const * operator-( IOperand const & rhs ) const;
+	IOperand const * operator*( IOperand const & rhs ) const; // Product
+	IOperand const * operator/( IOperand const & rhs ) const; // Quotient
+	IOperand const * operator%( IOperand const & rhs ) const; // Modulo
+	std::string const & toString( void ) const; // String representation of the instance
 };
 
 #endif
