@@ -1,6 +1,9 @@
 #ifndef OPERAND_HPP
 #define OPERAND_HPP
 
+//external
+#include <string>
+
 //internal
 #include "IOperand.hpp"
 
@@ -35,12 +38,20 @@ public:
 		this->_precision = 0;
 	}
 
-	int getPrecision( void ) const; {
+	int getPrecision( void ) const {
 
 		return this->_precision;
 	}
 
-	eOperandType getType( void ) const; // Type of the instance
+	eOperandType getType( void ) const {
+
+		return this->_type;
+	}
+
+	T			getValue() const {
+
+		return this->_value
+	}
 
 	Operand<T>	&operator= (const Operand<T> &Op) {
 		
@@ -53,15 +64,22 @@ public:
 	}
 
 	IOperand const * operator+( IOperand const & rhs ) const {
-
 		
+		Factory F;
+		
+		if(this->_precision >= rhs.getPrecision()) {
+			return new F.createOperand(this->_type, std::to_string(this->_value + rhs.getValue()));
+		}
+		else {
+			return new F.createOperand(rhs.getType(), std::to_string(this->_value + rhs.getValue()));
+		}
 	}
-
-	IOperand const * operator-( IOperand const & rhs ) const;
-	IOperand const * operator*( IOperand const & rhs ) const; // Product
-	IOperand const * operator/( IOperand const & rhs ) const; // Quotient
-	IOperand const * operator%( IOperand const & rhs ) const; // Modulo
-	std::string const & toString( void ) const; // String representation of the instance
+	
+	IOperand const * operator-( IOperand const & rhs ) const {}
+	IOperand const * operator*( IOperand const & rhs ) const {}
+	IOperand const * operator/( IOperand const & rhs ) const {}
+	IOperand const * operator%( IOperand const & rhs ) const {}
+	std::string const & toString( void ) const {}
 };
 
 #endif
