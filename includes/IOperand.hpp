@@ -1,8 +1,7 @@
 #ifndef IOPERAND_HPP
 #define IOPERAND_HPP
 
-#include <string>
-#include "typesEnum.hpp"
+#include "eOperandType.hpp"
 
 class IOperand {
 public:

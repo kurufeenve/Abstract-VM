@@ -6,14 +6,8 @@
 
 //internal
 #include "IOperand.hpp"
-
-enum class eOperandType {
-	INT8_T,
-	INT16_T,
-	INT32_T,
-	FLOAT,
-	DOUBLE
-};
+#include "eOperandType.hpp"
+#include "Factory.hpp"
 
 template <class T>
 class Operand: public IOperand
@@ -50,7 +44,7 @@ public:
 
 	T			getValue() const {
 
-		return this->_value
+		return this->_value;
 	}
 
 	Operand<T>	&operator= (const Operand<T> &Op) {
@@ -75,11 +69,30 @@ public:
 		}
 	}
 	
-	IOperand const * operator-( IOperand const & rhs ) const {}
-	IOperand const * operator*( IOperand const & rhs ) const {}
-	IOperand const * operator/( IOperand const & rhs ) const {}
-	IOperand const * operator%( IOperand const & rhs ) const {}
-	std::string const & toString( void ) const {}
+	IOperand const * operator-( IOperand const & rhs ) const {
+
+		return &rhs;
+	}
+
+	IOperand const * operator*( IOperand const & rhs ) const {
+
+		return &rhs;
+	}
+
+	IOperand const * operator/( IOperand const & rhs ) const {
+
+		return &rhs;
+	}
+
+	IOperand const * operator%( IOperand const & rhs ) const {
+
+		return &rhs;
+	}
+
+	std::string const & toString( void ) const {
+
+		return std::to_string(this->_value);
+	}
 };
 
 #endif

@@ -1,14 +1,15 @@
 #ifndef START_HPP
 #define START_HPP
 
+//external
 #include <iostream>
 #include <string>
 #include <stack>
 #include <fstream>
 
+//internal
 #include "../includes/main.hpp"
 #include "../includes/Lexer.hpp"
-#include "../includes/types.hpp"
 #include "../includes/MyErrors.hpp"
 #include "../includes/IOperand.hpp"
 

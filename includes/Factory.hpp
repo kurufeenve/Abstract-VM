@@ -3,6 +3,8 @@
 
 //external
 #include <map>
+#include <limits>
+#include <functional>
 
 //internal
 #include "Operand.hpp"
