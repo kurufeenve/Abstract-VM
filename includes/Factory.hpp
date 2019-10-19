@@ -1,5 +1,4 @@
-#ifndef FACTORY_HPP
-#define FACTORY_HPP
+#pragma once
 
 //external
 #include <map>
@@ -8,6 +7,8 @@
 
 //internal
 #include "Operand.hpp"
+
+class Operand;
 
 class Factory {
 
@@ -29,5 +30,3 @@ public:
 	IOperand const * createOperand( eOperandType type, std::string const & value ) const;
 	
 };
-
-#endif

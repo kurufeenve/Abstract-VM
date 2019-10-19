@@ -1,7 +1,7 @@
 SRC = main.cpp Start.cpp Lexer.cpp Factory.cpp
  
 INC = ./includes/main.hpp ./includes/Start.hpp ./includes/Lexer.hpp ./includes/Factory.hpp \
-./includes/eOperandType.hpp
+./includes/eOperandType.hpp ./includes/Operand.hpp
 
 SRC_DIR = ./src/
 OBJ_DIR = ./obj/

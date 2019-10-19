@@ -1,5 +1,4 @@
-#ifndef OPERAND_HPP
-#define OPERAND_HPP
+#pragma once
 
 //external
 #include <string>
@@ -9,11 +8,14 @@
 #include "eOperandType.hpp"
 #include "Factory.hpp"
 
+class Factory;
+
 template <class T>
 class Operand: public IOperand
 {
 private:
 
+	Factory			*_F = new Factory();
 	T				_value;
 	int				_precision;
 	eOperandType	_type;
@@ -59,14 +61,13 @@ public:
 
 	IOperand const * operator+( IOperand const & rhs ) const {
 		
-		Factory F;
-		
-		if(this->_precision >= rhs.getPrecision()) {
-			return new F.createOperand(this->_type, std::to_string(this->_value + rhs.getValue()));
-		}
-		else {
-			return new F.createOperand(rhs.getType(), std::to_string(this->_value + rhs.getValue()));
-		}
+		// if(this->_precision >= rhs.getPrecision()) {
+		// 	return new F.createOperand(this->_type, std::to_string(this->_value + rhs.getValue()));
+		// }
+		// else {
+		// 	return new F.createOperand(rhs.getType(), std::to_string(this->_value + rhs.getValue()));
+		// }
+		return &rhs;
 	}
 	
 	IOperand const * operator-( IOperand const & rhs ) const {
@@ -91,8 +92,7 @@ public:
 
 	std::string const & toString( void ) const {
 
-		return std::to_string(this->_value);
+		static const std::string ret = std::to_string(this->_value);
+		return ret;
 	}
 };
-
-#endif

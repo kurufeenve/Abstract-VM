@@ -1,4 +1,5 @@
 #include "../includes/Factory.hpp"
+#include "../includes/Operand.hpp"
 
 IOperand const * Factory::createInt8( std::string const & value ) const {
 
@@ -38,7 +39,7 @@ IOperand const * Factory::createDouble( std::string const & value ) const {
 
 Factory::Factory() {
 
-	this->_methods.emplace(eOperandType::INT8, ( IOperand const * (*Factory::createInt8)(int) )/*std::bind(&Factory::createInt8, std::placeholders::_1)*/);
+	this->_methods.emplace(eOperandType::INT8, &Factory::createInt8);
 }
 
 Factory::Factory(const Factory &Fac) {

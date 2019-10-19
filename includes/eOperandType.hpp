@@ -1,5 +1,4 @@
-#ifndef TYPESENUM_HPP
-#define TYPESENUM_HPP
+#pragma once
 
 enum class eOperandType {
 	INT8,
@@ -8,5 +7,3 @@ enum class eOperandType {
 	FLOAT,
 	DOUBLE
 };
-
-#endif

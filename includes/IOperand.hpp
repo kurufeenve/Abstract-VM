@@ -1,5 +1,4 @@
-#ifndef IOPERAND_HPP
-#define IOPERAND_HPP
+#pragma once
 
 #include "eOperandType.hpp"
 
@@ -15,5 +14,3 @@ public:
 	virtual std::string const & toString( void ) const = 0; // String representation of the instance
 	virtual ~IOperand( void ) {}
 };
-
-#endif
