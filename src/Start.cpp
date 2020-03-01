@@ -11,7 +11,7 @@ void	Start::CheckArgs(int argc, char **argv)
 {
 	const std::string	err = "ERROR: Wrong number of arguments\n";
 
-	if (argc > 2)
+	if (argc != 2)
 	{
 		throw AException(err);
 	}
