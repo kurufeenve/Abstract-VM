@@ -9,7 +9,7 @@ Start::~Start(void)
 
 void	Start::CheckArgs(int argc, char **argv)
 {
-	const std::string	err = "ERROR: Wrong number of arguments\n";
+	const std::string	err = "ERROR: Wrong number of arguments\nuse -h for help\n";
 
 	if (argc != 2)
 	{

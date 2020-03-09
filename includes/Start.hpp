@@ -11,7 +11,7 @@ class Start
 	public:
 				Start(void);
 				Start(const Start &St) = delete;
-				Start(const Start &&St) = delete;
+				Start(const Start &&St) = delete; // To disable move in C++
 				~Start(void);
 		Start	&operator= (const Start &St) = delete;
 

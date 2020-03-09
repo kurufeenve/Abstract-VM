@@ -1,6 +1,6 @@
-SRC = main.cpp Start.cpp AException.cpp # Lexer.cpp Factory.cpp
+SRC = main.cpp Start.cpp AException.cpp Lexer.cpp # Factory.cpp
  
-INC = ./includes/Start.hpp ./includes/AException.hpp #./includes/Lexer.hpp ./includes/Factory.hpp \
+INC = ./includes/Start.hpp ./includes/AException.hpp ./includes/Lexer.hpp #./includes/Factory.hpp \
 ./includes/eOperandType.hpp ./includes/Operand.hpp
 
 SRC_DIR = ./src/
