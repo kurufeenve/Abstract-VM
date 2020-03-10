@@ -12,10 +12,12 @@
 
 #include "../includes/Lexer.hpp"
 
-Lexer::Lexer(void) : m_lexems({std::regex("push"), std::regex("pop"), std::regex("dump"), \
-		std::regex("assert"), std::regex("add"), std::regex("sub"), std::regex("mul"), \
-		std::regex("div"), std::regex("mod"), std::regex("print"), std::regex("exit"), \
-		std::regex("push"), std::regex("push"), }) {}
+Lexer::Lexer(void) : m_lexems({std::regex("push"), std::regex("pop"), \
+		std::regex("dump"), std::regex("assert"), std::regex("add"), \
+		std::regex("sub"), std::regex("mul"), std::regex("div"), \
+		std::regex("mod"), std::regex("print"), std::regex("exit"), \
+		std::regex("int(8|16|32)\\(-?\\d{1,}\\)"), \
+		std::regex("(float|double)\\(-?\\d{1,}.?\\d{0,}\\)"), }) {}
 
 Lexer::~Lexer(void)
 {
@@ -30,12 +32,13 @@ void	Lexer::checkLexems(std::string line)
 
 	for (;sline >> word;)
 	{
+		if (word == ";")
+		{
+			std::cout << "break" << std::endl;
+			break ;
+		}
 		for (auto const &lexema : m_lexems)
 		{
-			if (word == ";")
-			{
-				break ;
-			}
 			if (std::regex_match(word, lexema))
 			{
 				state = 1;
@@ -44,7 +47,7 @@ void	Lexer::checkLexems(std::string line)
 		}
 		if (state == 0)
 		{
-			std::string	ex = "NO such lexema" + word;
+			std::string	ex = "NO such lexema '" + word + "'";
 			throw AException(ex);
 		}
 	}

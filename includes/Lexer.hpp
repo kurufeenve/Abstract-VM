@@ -17,6 +17,7 @@
 #include <regex>
 #include <vector>
 #include <sstream>
+#include <iostream>
 #include "AException.hpp"
 
 class Lexer
